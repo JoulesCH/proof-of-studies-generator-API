@@ -1,6 +1,25 @@
 import requests
 from bs4 import BeautifulSoup
+
+import os
+
 from .headers import headers_studets_data, form_data_studets_data
+
+periodos = {
+    'Enero-Junio 2017': 0,
+    'Enero-Junio 2018': 2,
+    'Enero-Junio 2019': 4,
+    'Enero-Junio 2020': 6,
+    'Enero-Junio 2022': 10,
+    'Enero-Junio 2023': 12,
+    'Febrero-Junio 2021': 8,
+    'Septiembre 2020 -Febrero 2021': 7,
+    'Agosto 2021-Enero 2022': 9,
+    'Agosto-Diciembre 2017': 1,
+    'Agosto-Diciembre 2018': 3,
+    'Agosto-Diciembre 2019': 5,
+    'Agosto-Diciembre 2022': 11,
+}
 
 def isfloat(num):
     try:
@@ -9,7 +28,7 @@ def isfloat(num):
     except ValueError:
         return False
 
-def datos_estudiantes(boletas, datos_login, periodos):
+def get_students_data(boletas, datos_login):
     alumnos = []
     errores = []
     
@@ -17,7 +36,7 @@ def datos_estudiantes(boletas, datos_login, periodos):
     viewstate = datos_login['VIEWSTATE'].get('value')
     viewstategenerator = datos_login['VIEWSTATEGENERATOR'].get('value')
     eventvalidation = datos_login['EVENTVALIDATION'].get('value')
-    url = 'https://sistemasdp.sip.ipn.mx/WebTrayectoria/MAtricula/matricula_alu.aspx'
+    url = os.environ['URL']
 
     headers_studets_data['Cookie'] = cookie
 
