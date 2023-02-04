@@ -28,7 +28,6 @@ form_data_login = {
 headers_studets_data = {
     'Connection': 'keep-alive',
     'Content-Type': 'application/x-www-form-urlencoded',
-    'Cookie':cookie,
     'Host': 'sistemasdp.sip.ipn.mx',
     'Origin': 'https://sistemasdp.sip.ipn.mx',
     'Referer': 'https://sistemasdp.sip.ipn.mx/WebTrayectoria/MAtricula/matricula_alu.aspx',
@@ -44,9 +43,6 @@ headers_studets_data = {
 form_data_studets_data = {
         '__EVENTTARGET':'',
         '__EVENTARGUMENT':'',
-        '__VIEWSTATE': viewstate,
-        '__VIEWSTATEGENERATOR': viewstategenerator,
-        '__EVENTVALIDATION': eventvalidation,
         'ctl00$MainContent$txtRegistro': 'A200469',
         'ctl00$MainContent$btnSafe': 'Consultar',
     }
