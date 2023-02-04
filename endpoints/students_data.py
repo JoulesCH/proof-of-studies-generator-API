@@ -1,32 +1,13 @@
 from fastapi import APIRouter, Path
-from pydantic import BaseModel
-from typing import List
 
 import os
 
 from utils.students_data import get_students_data
 from utils.students_data.login import login
+from models import StudentDataResponse
 
 router = APIRouter()
 
-
-class Asignatura(BaseModel):
-    materia: str
-    calificacion: str
-    periodo: str
-    no_periodo: int
-
-class Alumno(BaseModel):
-    registro: str
-    nombre_completo: str
-    curp: str
-    nombre_programa: str
-    asignaturas: List[Asignatura]
-
-
-class StudentDataResponse(BaseModel):
-    alumno: Alumno
-    boletas_errores: list
 
 @router.get(
     path="/{student_boleta}",
