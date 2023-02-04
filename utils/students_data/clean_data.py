@@ -15,13 +15,14 @@ genero_pronombres = {
     )
 }
 
-def clean(alumnos, tipo, semestre_actual):
+
+def clean(alumnos, tipo, no_semestre_actual):
 
     if tipo == 'CONACYT':
-        condicion_periodo = lambda asignatura: asignatura['periodo']==semestre_actual
+        condicion_periodo = lambda asignatura: asignatura['no_periodo'] == no_semestre_actual
         llave = 'asignaturas_semestre'
     else:
-        condicion_periodo = lambda asignatura: asignatura['no_periodo'] < float('inf') #TODO
+        condicion_periodo = lambda asignatura: asignatura['no_periodo'] <= no_semestre_actual 
         llave = 'asignaturas_hasta_semestre'
 
     for alumno in alumnos:
@@ -62,7 +63,7 @@ def clean(alumnos, tipo, semestre_actual):
         else:
             no_periodos_cursados = asignaturas[-1]['no_periodo'] - alumno_asignaturas[0]['no_periodo'] + 1
             promedio =  suma_calificaciones/no_asignaturas_promedio
-        
+        del alumno['asignaturas']
         alumno['promedio_semestre'] = promedio
         alumno['semestre_actual_numero'] = num_letras[no_periodos_cursados]
     

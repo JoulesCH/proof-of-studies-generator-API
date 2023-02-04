@@ -4,7 +4,9 @@ from bs4 import BeautifulSoup
 import os
 
 from .headers import headers_studets_data, form_data_studets_data
+from .login import login
 
+# TODO
 periodos = {
     'Enero-Junio 2017': 0,
     'Enero-Junio 2018': 2,
@@ -28,7 +30,8 @@ def isfloat(num):
     except ValueError:
         return False
 
-def get_students_data(boletas, datos_login):
+def get_students_data(boletas):
+    datos_login = login(os.environ["USER"], os.environ["PASSWORD"])
     alumnos = []
     errores = []
     
