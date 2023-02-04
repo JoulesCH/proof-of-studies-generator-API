@@ -18,8 +18,35 @@ headers_login = {
     'Upgrade-Insecure-Requests': '1',
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.114 Safari/537.36 OPR/89.0.4447.48'
 }
+
 form_data_login = {
     '__EVENTTARGET':'',
     '__EVENTARGUMENT':'',
     'ctl00$MainContent$btnValidar': 'Iniciar sesión'
 }
+
+headers_studets_data = {
+    'Connection': 'keep-alive',
+    'Content-Type': 'application/x-www-form-urlencoded',
+    'Cookie':cookie,
+    'Host': 'sistemasdp.sip.ipn.mx',
+    'Origin': 'https://sistemasdp.sip.ipn.mx',
+    'Referer': 'https://sistemasdp.sip.ipn.mx/WebTrayectoria/MAtricula/matricula_alu.aspx',
+    'sec-ch-ua': '"Chromium";v="90", "Opera";v="76", ";Not A Brand";v="99"',
+    'Sec-Fetch-Dest': 'document',
+    'Sec-Fetch-Mode': 'navigate',
+    'Sec-Fetch-Site': 'same-origin',
+    'Sec-Fetch-User': '?1',
+    'Upgrade-Insecure-Requests': '1',
+    'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36 OPR/76.0.4017.177'
+}
+
+form_data_studets_data = {
+        '__EVENTTARGET':'',
+        '__EVENTARGUMENT':'',
+        '__VIEWSTATE': viewstate,
+        '__VIEWSTATEGENERATOR': viewstategenerator,
+        '__EVENTVALIDATION': eventvalidation,
+        'ctl00$MainContent$txtRegistro': 'A200469',
+        'ctl00$MainContent$btnSafe': 'Consultar',
+    }
