@@ -22,8 +22,8 @@ class StudentDataResponse(BaseModel):
     boletas_errores: List[str]
 
 
-# Conacyt
-class AlumnoConacyt(BaseModel):
+# Cleanned
+class AlumnoCleanned(BaseModel):
     registro: str
     nombre_completo: str
     curp: str
@@ -32,12 +32,24 @@ class AlumnoConacyt(BaseModel):
     pronombre_mayus: str
     letra_sexo: str
     proposicion: str
-    asignaturas_semestre: List[Asignatura]
     no_asignaturas: int
     promedio_semestre: float
     semestre_actual_numero: str
 
+# Conacyt
+class AlumnoConacyt(AlumnoCleanned):
+    asignaturas_semestre: List[Asignatura]
+
 
 class StudentConacytDataResponse(BaseModel):
     alumno: Union[AlumnoConacyt, None]
+    boletas_errores: List[str]
+
+# Beifi
+class AlumnoBeifi(AlumnoCleanned):
+    asignaturas_hasta_semestre: List[Asignatura]
+
+
+class StudentBeifiDataResponse(BaseModel):
+    alumno: Union[AlumnoBeifi, None]
     boletas_errores: List[str]
