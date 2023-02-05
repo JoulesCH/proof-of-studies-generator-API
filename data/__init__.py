@@ -1,9 +1,13 @@
-import json
 import firebase_admin
 from firebase_admin import credentials, firestore
 
+import os
+import json
 
-cred = credentials.Certificate("data/constanciasesfm-firebase-adminsdk-lsz8d-5fdee8cbf3.json")
+
+credentials_json = json.loads(os.environ.get('FIREBASE_CREDENTIALS'))
+cred = credentials.Certificate(credentials_json)
+
 firebase_admin.initialize_app(cred,{
   'projectId': 'constanciasesfm',
 })
