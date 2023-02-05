@@ -30,6 +30,8 @@ jobs:
       run:  echo FIREBASE_CREDENTIALS='${{ secrets.FIREBASE_CREDENTIALS }}' >> .env.prod
     - name: Set up env imgbb
       run:  echo IMGBB_KEY=${{ secrets.IMGBB_KEY }} >> .env.prod
+    - name: Set up env api key   
+      run:  echo API_KEY=${{ secrets.API_KEY }} >> .env.prod
 
     - name: Deploy to App Engine
       id: deploy

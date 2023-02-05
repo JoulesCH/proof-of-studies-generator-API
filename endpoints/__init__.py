@@ -1,9 +1,17 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Header, Depends
+from fastapi.exceptions import HTTPException
+
+import os
+
 from . import  catalogs, home, letters_pdf, students_data, letters_zip
 
 
+def apiKeyHeader(api_key: str = Header(..., description="The api key" )):
+    if api_key != os.environ.get("API_KEY"):
+        raise HTTPException(status_code=403, detail="Invalid API Key")
 
-api_router = APIRouter()
+api_router = APIRouter(dependencies=[Depends(apiKeyHeader)])
+
 
 api_router.include_router(home.router, tags=["Home"])
 
