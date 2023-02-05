@@ -2,7 +2,6 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 
-import os
 '''
 ⚠: With bugs
 ✅: Done
@@ -24,7 +23,7 @@ description = """
 - **Generar constancias BEIFI** ✅
 - **Generar constancias CONACYT** ✅
 ## Catálogos
-- **Obtener catálogos** ❌
+- **Obtener catálogos** 🚧
 - **Modificar catálogos** ❌
 
 """
