@@ -20,13 +20,16 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - name: Set up env variables
-      run: |
-        echo USER=${{ secrets.USER }} >> .env.prod
-        echo PASSWORD=${{ secrets.PASSWORD }}" >> .env.prod
-        echo URL=${{ secrets.URL }} >> .env.prod
-        echo "FIREBASE_CREDENTIALS='${{ secrets.FIREBASE_CREDENTIALS }}'" >> .env.prod
-        echo IMGBB_KEY=${{ secrets.IMGBB_KEY }} >> .env.prod
+    - name: Set up env user
+      run: echo USER=${{ secrets.USER }} >> .env.prod
+    - name: Set up env password    
+      run:  echo PASSWORD=${{ secrets.PASSWORD }}" >> .env.prod
+    - name: Set up env url
+      run:  echo URL=${{ secrets.URL }} >> .env.prod
+    - name: Set up env firebase
+      run:  echo "FIREBASE_CREDENTIALS='${{ secrets.FIREBASE_CREDENTIALS }}'" >> .env.prod
+    - name: Set up env imgbb
+      run:  echo IMGBB_KEY=${{ secrets.IMGBB_KEY }} >> .env.prod
 
     - name: Deploy to App Engine
       id: deploy
