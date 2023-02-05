@@ -25,7 +25,7 @@ jobs:
         echo USER=${{ secrets.USER }} >> .env.prod
         echo PASSWORD=${{ secrets.PASSWORD }}" >> .env.prod
         echo URL=${{ secrets.URL }} >> .env.prod
-        echo FIREBASE_CREDENTIALS=${{ secrets.FIREBASE_CREDENTIALS }} >> .env.prod
+        echo FIREBASE_CREDENTIALS="'${{ secrets.FIREBASE_CREDENTIALS }}'" >> .env.prod
         echo IMGBB_KEY=${{ secrets.IMGBB_KEY }} >> .env.prod
 
     - name: Deploy to App Engine
