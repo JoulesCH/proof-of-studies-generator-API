@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Path
+from fastapi import APIRouter, Path, Query
 
 import os
 
@@ -34,12 +34,15 @@ async def get_student_by_boleta(student_boleta: str = Path(title="La boleta del 
     description="Obtiene los datos **limpios para CONACYT** de un solo estudiante",
     response_model=StudentConacytDataResponse,
 )
-async def get_conacyt_by_boleta(student_boleta: str = Path(title="La boleta del estudiante para generar constancia CONACYT")):
+async def get_conacyt_by_boleta(
+    student_boleta: str = Path(title="La boleta del estudiante para generar constancia CONACYT"),
+    periodo_actual: int = Query(title="El periodo actual", example=5),
+):
     alumnos, errores = get_students_data(
         [student_boleta]
     )
     if alumnos:
-        data_cleanned = clean(alumnos, "CONACYT", 5)
+        data_cleanned = clean(alumnos, "CONACYT", periodo_actual)
         return {"alumno": data_cleanned[0], "boletas_errores": errores}
     else:
         return {"alumno": None, "boletas_errores": errores}
@@ -49,12 +52,15 @@ async def get_conacyt_by_boleta(student_boleta: str = Path(title="La boleta del 
     description="Obtiene los datos **limpios para BEIFI** de un solo estudiante",
     response_model=StudentBeifiDataResponse,
 )
-async def get_beifi_by_boleta(student_boleta: str = Path(title="La boleta del estudiante para generar constancia CONACYT")):
+async def get_beifi_by_boleta(
+    student_boleta: str = Path(title="La boleta del estudiante para generar constancia CONACYT"),
+    periodo_actual: int = Query(title="El periodo actual", example=5),
+):
     alumnos, errores = get_students_data(
         [student_boleta]
     )
     if alumnos:
-        data_cleanned = clean(alumnos, "BEIFI", 5)
+        data_cleanned = clean(alumnos, "BEIFI", periodo_actual)
         return {"alumno": data_cleanned[0], "boletas_errores": errores}
     else:
         return {"alumno": None, "boletas_errores": errores}
