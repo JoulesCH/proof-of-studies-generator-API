@@ -21,8 +21,11 @@ description = """
 - **Obtener datos crudos de muchos estudiantes** ❌
 - **Obtener datos limpios (preparados para una constancia) de muchos estudiantes** ❌
 ## Generar constancias
-- **Generar constancias BEIFI** ❌
-- **Generar constancias CONACYT** ❌
+- **Generar constancias BEIFI** ✅
+- **Generar constancias CONACYT** ✅
+## Catálogos
+- **Obtener catálogos** ❌
+- **Modificar catálogos** ❌
 
 """
 
