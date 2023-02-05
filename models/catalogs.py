@@ -21,3 +21,6 @@ class CatalogBase(BaseModel):
 class LettersBase(BaseModel):
     BEIFI: constancia
     CONACYT: constancia
+
+class BackgroundReponse(BaseModel):
+    url: str

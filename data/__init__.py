@@ -23,7 +23,36 @@ def getDbData():
     return data_instance
 
 
-def saveData(data):
+def update_Periods(periods):
+    global data_instance
+    collection = db.collection(u'config')
+    doc_ref = collection.document(u'periodos')
+
+    dic_periodos = {periodo: index for periodo,index in zip(periods, range(len(periods))) }
+    dic_periodos['lista'] = periods
+    
+    doc_ref.set(
+        dic_periodos
+    )
+    data_instance = None
+
+    return getDbData()
+
+
+def update_Vars(vars):
+    global data_instance
+    collection = db.collection(u'config')
+    doc_ref = collection.document(u'vars')
+
+    doc_ref.set(
+        vars
+    )
+    data_instance = None
+
+    return getDbData()
+
+
+def update_Conacyt(data):
     global data_instance
     collection = db.collection(u'config')
     doc_ref = collection.document(u'CONACYT')
@@ -36,8 +65,16 @@ def saveData(data):
             "title": "Constancia",
             "fondo": "plantilla_B2022.png"
             },
-        "contenido": data['contenido_conacyt']
+        "contenido": data
     })
+    data_instance = None
+
+    return getDbData()
+
+
+def update_Beifi(data):
+    global data_instance
+    collection = db.collection(u'config')
     doc_ref = collection.document(u'BEIFI')
     doc_ref.set({
         "datos_plantilla": {
@@ -48,24 +85,8 @@ def saveData(data):
             "title": "Constancia",
             "fondo": "plantilla_B2022.png"
             },
-        "contenido": data['contenido_beifi']
+        "contenido": data
     })
-    doc_ref = collection.document(u'vars')
-    doc_ref.set({
-        "periodo_actual_inicio_fecha": data['periodo_actual_inicio_fecha'],
-        "periodo_actual_fin_fecha": data['periodo_actual_fin_fecha'],
-        "nombre_signatario": data['nombre_signatario'],
-        "puesto_signatario": data['puesto_signatario'],
-        'fondo': data['file_url'],
-    })
-    doc_ref = collection.document(u'periodos')
-    periodos = data['periodos'].replace(', ', ',').split(',')
-    dic_periodos = {periodo: index for periodo,index in zip(periodos, range(len(periodos))) }
-    dic_periodos['lista'] = periodos
-    doc_ref.set(
-        dic_periodos
-    )
-
     data_instance = None
 
     return getDbData()
