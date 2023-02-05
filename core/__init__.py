@@ -9,9 +9,8 @@ from dotenv import load_dotenv
 🚧: In progress
 '''
 
-load_dotenv(
-    dotenv_path=".env.local",
-)
+load_dotenv(dotenv_path=".env.local",)
+load_dotenv(dotenv_path=".env.prod",)
 description = """
 # API del **Sistema de Generador de Constancias de Posgrado**
 ## Datos de estudiante
