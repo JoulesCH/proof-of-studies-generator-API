@@ -27,7 +27,7 @@ jobs:
     - name: Set up env url
       run:  echo URL=${{ secrets.URL }} >> .env.prod
     - name: Set up env firebase
-      run:  echo FIREBASE_CREDENTIALS=${{ secrets.FIREBASE_CREDENTIALS }} >> .env.prod
+      run:  echo FIREBASE_CREDENTIALS='${{ secrets.FIREBASE_CREDENTIALS }}' >> .env.prod
     - name: Set up env imgbb
       run:  echo IMGBB_KEY=${{ secrets.IMGBB_KEY }} >> .env.prod
 
