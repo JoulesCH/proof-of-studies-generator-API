@@ -23,7 +23,7 @@ jobs:
     - name: Set up env user
       run: echo USER=${{ secrets.USER }} >> .env.prod
     - name: Set up env password    
-      run:  echo PASSWORD=${{ secrets.PASSWORD }}" >> .env.prod
+      run:  echo PASSWORD=${{ secrets.PASSWORD }} >> .env.prod
     - name: Set up env url
       run:  echo URL=${{ secrets.URL }} >> .env.prod
     - name: Set up env firebase
