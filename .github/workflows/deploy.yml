@@ -22,11 +22,11 @@ jobs:
       uses: actions/checkout@v2
     - name: Set up env variables
       run: |
-        echo "USER=$USER" >> .env.prod
-        echo "PASSWORD=$PASSWORD" >> .env.prod
-        echo "URL=$URL" >> .env.prod
-        echo "FIREBASE_CREDENTIALS=$FIREBASE_CREDENTIALS" >> .env.prod
-        echo "IMGBB_KEY=$IMGBB_KEY" >> .env.prod
+        echo USER=${{ secrets.USER }} >> .env.prod
+        echo PASSWORD=${{ secrets.PASSWORD }}" >> .env.prod
+        echo URL=${{ secrets.URL }} >> .env.prod
+        echo FIREBASE_CREDENTIALS=${{ secrets.FIREBASE_CREDENTIALS }} >> .env.prod
+        echo IMGBB_KEY=${{ secrets.IMGBB_KEY }} >> .env.prod
 
     - name: Deploy to App Engine
       id: deploy
