@@ -96,12 +96,26 @@ async def generate_pdf(
     if alumnos:
         data_cleanned = clean(alumnos, "BEIFI", periodo_actual)
         data_db = getDbData() #Consulta a la DB
+        periodo_actual = data_db['periodos']['lista'][periodo_actual]
+        contenido = data_db['BEIFI']['contenido']
+        nombre_signatario = data_db['vars']['nombre_signatario']
+        puesto_signatario = data_db['vars']['puesto_signatario']
+        periodo_actual_inicio_fecha = data_db['vars']['periodo_actual_inicio_fecha']
+        periodo_actual_fin_fecha = data_db['vars']['periodo_actual_fin_fecha']
+        fondo = data_db['vars']['fondo']
         bytes_pdf = createPDF(
             datos=data_cleanned[0], 
             tipo_constancia="BEIFI", 
             data_db=data_db, 
             fecha=fecha, 
-            periodo_actual=data_db['periodos']['lista'][periodo_actual]
+            periodo_actual=periodo_actual,
+            no_periodos_programa = programas_no_periodos[data_cleanned[0]['nombre_programa']],
+            contenido=contenido,
+            nombre_signatario=nombre_signatario,
+            puesto_signatario=puesto_signatario,
+            periodo_actual_inicio_fecha=periodo_actual_inicio_fecha,
+            periodo_actual_fin_fecha=periodo_actual_fin_fecha,
+            fondo=fondo
         )
         return Response(bytes_pdf, media_type="application/pdf")
     else:

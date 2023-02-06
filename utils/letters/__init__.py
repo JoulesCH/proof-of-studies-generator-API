@@ -179,10 +179,10 @@ def createPDF(
     folio = datos['registro']    
     
     # Se agrega la tabla de materias dependiendo del tipo
-    if '%tabla_asignaturas_semestre%' in contenido:
+    if tipo_constancia=='CONACYT':
         tipo_tabla = '%tabla_asignaturas_semestre%'
         llave = 'asignaturas_semestre'
-    elif '%tabla_asignaturas_hasta_semestre%' in contenido:
+    elif tipo_constancia=='BEIFI':
         tipo_tabla = '%tabla_asignaturas_hasta_semestre%'
         llave = 'asignaturas_hasta_semestre'
     else:
@@ -246,7 +246,6 @@ def createPDF(
     else:
         contenido = [Paragraph(contenido, parrafos)]
     
-    path = f'constancias_posgrado2022/{folio}.pdf'
     buffer = io.BytesIO()
     doc = SimpleDocTemplate(
         buffer, 
