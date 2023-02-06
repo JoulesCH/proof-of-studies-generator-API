@@ -13,7 +13,7 @@ def login(user, password):
     session = requests.Session()
 
     # Login para obtener los hidden inputs
-    response_login_get = session.get(url_login)
+    response_login_get = session.get(url_login, verify=False)
     get_soup = BeautifulSoup(response_login_get.text, "html.parser")
     inputs = get_soup.find_all('input')
     VIEWSTATE, VIEWSTATEGENERATOR, EVENTVALIDATION= inputs[:3]
@@ -30,7 +30,8 @@ def login(user, password):
     response_login = session.post(
         url_login,
         headers=headers_login,
-        data=form_data_login
+        data=form_data_login, 
+        verify=False
     )
 
     cookie_ASPNETSessionId = session.cookies.get('ASP.NET_SessionId')

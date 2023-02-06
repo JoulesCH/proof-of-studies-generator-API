@@ -55,7 +55,8 @@ def get_students_data(boletas):
         response = session.post(
             url,
             headers=headers_studets_data,
-            data=form_data_studets_data
+            data=form_data_studets_data, 
+            verify=False
 
         )
         soup = BeautifulSoup(response.text, "html.parser")
